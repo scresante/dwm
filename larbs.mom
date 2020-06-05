@@ -93,7 +93,7 @@ To type capital letters, hold down the \f(CWShift\fP key\(emthat might sound lik
  , Be sure you play around with these. Be flexible with the basic commands and the system will grow on you quick.
 .LI
 .ITEM
-\f(CWMod+Enter\fP \(en Spawn terminal (the default terminal is \f(CWst\fP; run \f(CWman st\fP for more.)
+\f(CWMod+Enter\fP \(en Spawn terminal (the default terminal is \f(CWalacritty\fP; see \f(CWtermcmd\fP)
 .ITEM
 \f(CWMod+q\fP \(en Close window
 .ITEM
@@ -101,9 +101,9 @@ To type capital letters, hold down the \f(CWShift\fP key\(emthat might sound lik
 .ITEM
 \f(CWMod+j/k\fP \(en Cycle thru windows by their stack order
 .ITEM
-\f(CWMod+Space\fP \(en Make selected window the master (or switch master with 2nd)
-.ITEM
 \f(CWMod+h/l\fP \(en Change width of master window
+.ITEM
+\f(CWMod+Space\fP \(en Make selected window the master (or switch master with 2nd)
 .ITEM
 \f(CWMod+z/x\fP \(en Increase/decrease gaps (may also hold \f(CWMod\fP and scroll mouse)
 .ITEM
