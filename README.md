@@ -2,6 +2,10 @@
 
 ## FAQ
 
+> What is dwm?
+
+Upstream is at [suckless](https://git.suckless.org/dwm/)
+
 > What are the bindings?
 
 This is suckless, mmmbud, the source code is the documentation! Check out [config.h](config.h).
