@@ -51,6 +51,7 @@ static const Rule rules[] = {
 	{ NULL,       NULL,       "Event Tester",   0,            0,           0,         1,        -1 },
 	{ NULL,      "spterm",    NULL,       	    SPTAG(0),     1,           1,         0,        -1 },
 	{ NULL,      "spcalc",    NULL,       	    SPTAG(1),     1,           1,         0,        -1 },
+	{ "mpv",  NULL,       NULL,       1 << 5,       0,           -1 },
 };
 
 /* layout(s) */
@@ -126,8 +127,8 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,	XK_BackSpace,   spawn,		SHCMD("sysact") },
 
 	{ MODKEY,		    XK_Tab,	        view,		{0} },
-	{ MODKEY,		    XK_q,	        killclient,	{0} },
-	{ MODKEY|ShiftMask,	XK_q,	        spawn,		SHCMD("sysact") },
+	{ MODKEY,		    XK_q,	        spawn,      SHCMD("qutebrowser") },
+	{ MODKEY|ShiftMask, XK_q,	        killclient,	{0} },
 	{ MODKEY,		    XK_w,	        spawn,		SHCMD("$BROWSER") },
 	{ MODKEY|ShiftMask,	XK_w,	        spawn,		SHCMD("st -e sudo nmtui") },
 	{ MODKEY,		    XK_e,	        spawn,		SHCMD("st -e neomutt ; pkill -RTMIN+12 dwmblocks; rmdir ~/.abook") },
