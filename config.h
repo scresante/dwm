@@ -52,7 +52,9 @@ static const Rule rules[] = {
 	{ NULL,       NULL,       "Event Tester",   0,            0,           0,         1,        -1 },
 	{ NULL,      "spterm",    NULL,       	    SPTAG(0),     1,           1,         0,        -1 },
 	{ NULL,      "spcalc",    NULL,       	    SPTAG(1),     1,           1,         0,        -1 },
-	{ "mpv",  NULL,       NULL,       1 << 5,       0,           -1 },
+	{ "mpv",      NULL,       NULL,             1 << 5,       0,           0,         0,        -1 },
+    { "qutebrowser", NULL,    NULL,             1 << 1,       0,           0,         0,        -1 },
+    { "firefox",  NULL,       NULL,             1 << 2,       0,           0,         0,        -1 },
 };
 
 /* layout(s) */
@@ -130,6 +132,7 @@ static Key keys[] = {
 	{ MODKEY,		    XK_Tab,	        view,		{0} },
 	{ MODKEY,		    XK_q,	        spawn,      SHCMD("qutebrowser") },
 	{ MODKEY|ShiftMask, XK_q,	        killclient,	{0} },
+    { MODKEY|ShiftMask|Mod1Mask, XK_q,  spawn,      SHCMD("killall -9 dwm") },
 	{ MODKEY,		    XK_w,	        spawn,		SHCMD("firefox") },
 	{ MODKEY|ShiftMask,	XK_w,	        spawn,		SHCMD("st -e sudo nmtui") },
 	//{ MODKEY,		    XK_e,	        spawn,		SHCMD("st -e neomutt ; pkill -RTMIN+12 dwmblocks; rmdir ~/.abook") },
@@ -142,6 +145,8 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,	XK_y,	        setlayout,	{.v = &layouts[4]} }, // deck
 	{ MODKEY,		    XK_u,	        setlayout,	{.v = &layouts[2]} }, // spiral
 	{ MODKEY|ShiftMask,	XK_u,	        setlayout,	{.v = &layouts[3]} }, // dwindle
+
+	{ MODKEY|ControlMask,XK_u,	        spawn,		SHCMD("mpv-sel") },
 
 	{ MODKEY,		    XK_i,		    setlayout,	{.v = &layouts[6]} }, // centeredmaster
 	{ MODKEY|ShiftMask,	XK_i,	        setlayout,	{.v = &layouts[7]} }, // centeredfloatingmaster
@@ -202,17 +207,23 @@ static Key keys[] = {
     { MODKEY,			XK_F3,			spawn,		SHCMD("notify-send -u normal -t 1000 'f3'") },
 	{ MODKEY,			XK_F4,			spawn,		SHCMD("st -e pulsemixer; kill -44 $(pidof dwmblocks)") },
 	{ MODKEY,			XK_F5,			xrdb,		{.v = NULL } },
-	{ MODKEY,			XK_F6,			spawn,		SHCMD("torwrap") },
-	{ MODKEY,			XK_F7,			spawn,		SHCMD("td-toggle") },
-	{ MODKEY,			XK_F8,			spawn,		SHCMD("mailsync") },
+	//{ MODKEY,			XK_F5,			spawn,      SHCMD("notify-send -u normal -t 1000 'f5'")},
+	//{ MODKEY,			XK_F6,			spawn,		SHCMD("torwrap") },
+	{ MODKEY,			XK_F6,			spawn,      SHCMD("notify-send -u normal -t 1000 'f6'")},
+	//{ MODKEY,			XK_F7,			spawn,		SHCMD("td-toggle") },
+	{ MODKEY,			XK_F7,			spawn,      SHCMD("notify-send -u normal -t 1000 'f7'")},
+	//{ MODKEY,			XK_F8,			spawn,		SHCMD("mailsync") },
+	{ MODKEY,			XK_F8,			spawn,      SHCMD("notify-send -u normal -t 1000 'f8'")},
     { MODKEY,			XK_F9,			spawn,		SHCMD("alacritty -e vim ~/.local/src/dwm/config.h") },
-    { MODKEY|ShiftMask,	XK_F9,			spawn,		SHCMD("alacritty -e vim ~/.local/src/dwmblocks/config.h") },
     { MODKEY|ShiftMask,	XK_F9,			spawn,		SHCMD("/home/shawn/bin/dwm-rebuild") },
+    { MODKEY,	        XK_F10,			spawn,		SHCMD("alacritty -e vim ~/.local/src/dwmblocks/config.h") },
 	//{ MODKEY,			XK_F9,			spawn,		SHCMD("dmenumount") },
 	//{ MODKEY,			XK_F10,			spawn,		SHCMD("dmenuumount") },
 	//{ MODKEY,			XK_F11,			spawn,		SHCMD("mpv --no-cache --no-osc --no-input-default-bindings --input-conf=/dev/null --title=webcam $(ls /dev/video[0,2,4,6,8] | tail -n 1)") },
-	{ MODKEY,			XK_F12,			spawn,      SHCMD("notify-send -u normal -t 1000 'f12'")},
-	{ MODKEY|ShiftMask|Mod1Mask,XK_F12,		spawn,      SHCMD("notify-send -u normal -t 1000 'alt shift f12'")},
+	{ MODKEY,			XK_F11,			spawn,      SHCMD("notify-send -u normal -t 1000 'f11'")},
+	{ MODKEY,			XK_F12,			spawn,      SHCMD("notify-send -u normal -t 1000 'mod f12'")},
+	{ MODKEY|Mod1Mask,	XK_F12,			spawn,      SHCMD("notify-send -u normal -t 1000 'mod alt f12'")},
+	{ ShiftMask|Mod1Mask,XK_F12,		spawn,      SHCMD("notify-send -u normal -t 1000 'alt shift f12'")},
 	{ MODKEY,			XK_space,		zoom,   		{0} },
 	{ MODKEY|ShiftMask,	XK_space,		togglefloating,	{0} },
 
@@ -230,7 +241,7 @@ static Key keys[] = {
 /* { MODKEY|ShiftMask,		XK_c,		    spawn,		SHCMD("") }, */
 /* { MODKEY|ShiftMask,		XK_b,		    spawn,		SHCMD("") }, */
 
-	{ 0,				XK_Print,	    spawn,		SHCMD("maim pic-full-$(date '+%y%m%d-%H%M-%S').png") },
+	{ 0,				XK_Print,	    spawn,		SHCMD("maim /tmp/pic-full-$(date '+%y%m%d-%H%M-%S').png") },
 	{ ShiftMask,		XK_Print,	    spawn,		SHCMD("maimpick") },
 	{ MODKEY,			XK_Print,	    spawn,		SHCMD("dmenurecord") },
 	{ MODKEY|ShiftMask,	XK_Print,	    spawn,		SHCMD("dmenurecord kill") },
