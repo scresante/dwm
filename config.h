@@ -1,5 +1,6 @@
 /* See LICENSE file for copyright and license details. */
-
+#define CTRL ControlMask
+#define ALT Mod1Mask
 /* appearance */
 static const unsigned int borderpx  = 4;        // border pixel of windows
 static const unsigned int snap      = 32;       // snap pixel
@@ -121,6 +122,8 @@ static Key keys[] = {
 
 	{ MODKEY,		    XK_0,			view,		{.ui = ~0 } },
 	{ MODKEY|ShiftMask,	XK_0,			tag,		{.ui = ~0 } },
+    { CTRL|ALT|ShiftMask, XK_bracketleft, spawn,     SHCMD("brightness down") },
+    { CTRL|ALT|ShiftMask, XK_bracketright,spawn,     SHCMD("brightness up") },
 
 	{ MODKEY,		    XK_minus,       spawn,		SHCMD("pamixer --allow-boost -d 5; kill -44 $(pidof dwmblocks)") },
 	{ MODKEY|ShiftMask,	XK_minus,       spawn,		SHCMD("pamixer --allow-boost -d 15; kill -44 $(pidof dwmblocks)") },
