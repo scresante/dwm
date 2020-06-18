@@ -55,6 +55,7 @@ static const Rule rules[] = {
 	{ "mpv",      NULL,       NULL,             1 << 5,       0,           0,         0,        -1 },
     { "qutebrowser", NULL,    NULL,             1 << 1,       0,           0,         0,        -1 },
     { "firefox",  NULL,       NULL,             1 << 2,       0,           0,         0,        -1 },
+    { "thunderbird",  NULL,       NULL,             1 << 3,       0,           0,         0,        -1 },
 };
 
 /* layout(s) */
@@ -183,7 +184,7 @@ static Key keys[] = {
 	{ MODKEY,	    	XK_b,		    togglebar,	{0} },
 	{ MODKEY,	    	XK_n,		    spawn,		SHCMD("st -e nvim -c VimwikiIndex") },
 	{ MODKEY|ShiftMask,	XK_n,		    spawn,		SHCMD("st -e newsboat; pkill -RTMIN+6 dwmblocks") },
-	{ MODKEY,	    	XK_m,		    spawn,		SHCMD("st -e ncmpcpp") },
+	{ MODKEY,	    	XK_m,		    spawn,		SHCMD("thunderbird") },
 	{ MODKEY|ShiftMask,	XK_m,		    spawn,		SHCMD("pamixer -t; kill -44 $(pidof dwmblocks)") },
 	{ MODKEY,	    	XK_comma,	    spawn,		SHCMD("mpc prev") },
 	{ MODKEY|ShiftMask,	XK_comma,	    spawn,		SHCMD("mpc seek 0%") },
