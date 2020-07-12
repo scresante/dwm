@@ -56,7 +56,8 @@ static const Rule rules[] = {
 	{ "mpv",      NULL,       NULL,             1 << 5,       0,           0,         0,        -1 },
     { "qutebrowser", NULL,    NULL,             1 << 1,       0,           0,         0,        -1 },
     { "firefox",  NULL,       NULL,             1 << 2,       0,           0,         0,        -1 },
-    { "thunderbird",  NULL,       NULL,             1 << 3,       0,           0,         0,        -1 },
+    { "Thunderbird",  NULL,   NULL,             1 << 7,       0,           0,         0,        -1 },
+    { "VirtualBox Machine",NULL,  NULL,         1 << 4,       1,           0,         0,        -1 },
 };
 
 /* layout(s) */
@@ -125,6 +126,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,	XK_0,			tag,		{.ui = ~0 } },
     { CTRL|ALT|ShiftMask, XK_bracketleft, spawn,     SHCMD("brightness down") },
     { CTRL|ALT|ShiftMask, XK_bracketright,spawn,     SHCMD("brightness up") },
+    { CTRL|ALT|ShiftMask, XK_Delete,    spawn,     SHCMD("i3lock-fancy") },
 
 	{ MODKEY,		    XK_minus,       spawn,		SHCMD("pamixer --allow-boost -d 5; kill -44 $(pidof dwmblocks)") },
 	{ MODKEY|ShiftMask,	XK_minus,       spawn,		SHCMD("pamixer --allow-boost -d 15; kill -44 $(pidof dwmblocks)") },
@@ -241,7 +243,7 @@ static Key keys[] = {
 /* { MODKEY|ShiftMask,		XK_apostrophe,  spawn,		SHCMD("") }, */
 /* { MODKEY|ShiftMask,		XK_z,		    spawn,		SHCMD("") }, */
 /* { MODKEY|ShiftMask,		XK_x,		    spawn,		SHCMD("") }, */
-/* { MODKEY,			    XK_c,		    spawn,		SHCMD("") }, */
+    //{ MODKEY,			    XK_c,		    spawn,		SHCMD("st -e bc -l") },
 /* { MODKEY|ShiftMask,		XK_c,		    spawn,		SHCMD("") }, */
 /* { MODKEY|ShiftMask,		XK_b,		    spawn,		SHCMD("") }, */
 
