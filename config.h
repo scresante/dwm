@@ -54,11 +54,12 @@ static const Rule rules[] = {
 	{ NULL,       NULL,       "Event Tester",   0,            0,           0,         1,        -1 },
 	{ NULL,      "spterm",    NULL,       	    SPTAG(0),     1,           1,         0,        -1 },
 	{ NULL,      "spcalc",    NULL,       	    SPTAG(1),     1,           1,         0,        -1 },
-	{ "mpv",      NULL,       NULL,             1 << 5,       0,           0,         0,        -1 },
+	{ "mpv",      NULL,       NULL,             1 << 5,       0,           0,         0,         0 },
     { "qutebrowser", NULL,    NULL,             1 << 1,       0,           0,         0,        -1 },
     { "firefox",  NULL,       NULL,             1 << 2,       0,           0,         0,        -1 },
     { "Thunderbird",  NULL,   NULL,             1 << 7,       0,           0,         0,        -1 },
     { "VirtualBox Machine",NULL,  NULL,         1 << 4,       1,           0,         0,        -1 },
+    { "Pcmanfm",  NULL,       NULL,             0,            1,           0,         1,        -1 },
 };
 
 /* layout(s) */
@@ -154,6 +155,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,	XK_u,	        setlayout,	{.v = &layouts[3]} }, // dwindle
 
 	{ MODKEY|ControlMask,XK_u,	        spawn,		SHCMD("mpv-sel") },
+	{ MODKEY|ControlMask,XK_v,	        spawn,		SHCMD("mpv-sel") },
 
 	{ MODKEY,		    XK_i,		    setlayout,	{.v = &layouts[6]} }, // centeredmaster
 	{ MODKEY|ShiftMask,	XK_i,	        setlayout,	{.v = &layouts[7]} }, // centeredfloatingmaster
@@ -173,8 +175,8 @@ static Key keys[] = {
 	{ MODKEY,		    XK_s,		    togglesticky,	{0} },
 
 	{ MODKEY,		    XK_d,		    spawn,          {.v = dmenucmd } },
-	{ MODKEY,		    XK_f,		    togglefullscr,	{0} },
-	{ MODKEY|ShiftMask,	XK_f,		    setlayout,  	{.v = &layouts[8]} },
+	{ MODKEY,		    XK_f,		    spawn,          SHCMD("pcmanfm") },
+	{ MODKEY|ShiftMask,	XK_f,		    togglefullscr,	{0} },
 	{ MODKEY,			XK_g,		    shiftview,  	{ .i = -1 } },
 	{ MODKEY|ShiftMask,	XK_g,		    shifttag,   	{ .i = -1 } },
 	{ MODKEY,		    XK_h,		    setmfact,   	{.f = -0.05} },
