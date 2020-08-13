@@ -190,14 +190,14 @@ static Key keys[] = {
 	{ MODKEY,   		XK_z,		    incrgaps,	{.i = +3 } },
 	{ MODKEY,	    	XK_x,		    incrgaps,	{.i = -3 } },
 	{ MODKEY,	    	XK_b,		    togglebar,	{0} },
-	{ MODKEY,	    	XK_n,		    spawn,		SHCMD("st -e nvim -c VimwikiIndex") },
-	{ MODKEY|ShiftMask,	XK_n,		    spawn,		SHCMD("st -e newsboat; pkill -RTMIN+6 dwmblocks") },
+	//{ MODKEY,	    	XK_n,		    spawn,		SHCMD("st -e nvim -c VimwikiIndex") },
+	//{ MODKEY|ShiftMask,	XK_n,		    spawn,		SHCMD("st -e newsboat; pkill -RTMIN+6 dwmblocks") },
 	{ MODKEY,	    	XK_m,		    spawn,		SHCMD("thunderbird") },
 	{ MODKEY|ShiftMask,	XK_m,		    spawn,		SHCMD("pamixer -t; kill -44 $(pidof dwmblocks)") },
-	{ MODKEY,	    	XK_comma,	    spawn,		SHCMD("mpc prev") },
-	{ MODKEY|ShiftMask,	XK_comma,	    spawn,		SHCMD("mpc seek 0%") },
-	{ MODKEY,	    	XK_period,	    spawn,		SHCMD("mpc next") },
-	{ MODKEY|ShiftMask,	XK_period,	    spawn,		SHCMD("mpc repeat") },
+	//{ MODKEY,	    	XK_comma,	    spawn,		SHCMD("mpc prev") },
+	//{ MODKEY|ShiftMask,	XK_comma,	    spawn,		SHCMD("mpc seek 0%") },
+	//{ MODKEY,	    	XK_period,	    spawn,		SHCMD("mpc next") },
+	//{ MODKEY|ShiftMask,	XK_period,	    spawn,		SHCMD("mpc repeat") },
 
 	{ MODKEY,	    	XK_Left,	    focusmon,	{.i = -1 } },
 	{ MODKEY|ShiftMask,	XK_Left,	    tagmon,		{.i = -1 } },
@@ -242,7 +242,7 @@ static Key keys[] = {
 /* { MODKEY|ShiftMask,		XK_Tab,		    spawn,		SHCMD("") }, */
 /* { MODKEY|ShiftMask,		XK_backslash,   spawn,		SHCMD("") }, */
 /* { MODKEY|ShiftMask,		XK_s,		    spawn,		SHCMD("") }, */
-/* { MODKEY,			    XK_d,		    spawn,		SHCMD("") } }, */
+/* { MODKEY,			    XK_d,		    spawn,		SHCMD("") }, */
 /* { MODKEY|ShiftMask,		XK_apostrophe,  spawn,		SHCMD("") }, */
 /* { MODKEY|ShiftMask,		XK_z,		    spawn,		SHCMD("") }, */
 /* { MODKEY|ShiftMask,		XK_x,		    spawn,		SHCMD("") }, */
@@ -285,6 +285,7 @@ static Key keys[] = {
 	{ 0, XF86XK_MonBrightnessUp,		spawn,		SHCMD("xbacklight -inc 15") },
 	{ 0, XF86XK_MonBrightnessDown,		spawn,		SHCMD("xbacklight -dec 15") },
 
+    // unused shit from lukes config
 /* { MODKEY|Mod4Mask,				XK_h,      incrgaps,       {.i = +1 } }, */
 /* { MODKEY|Mod4Mask,              XK_l,      incrgaps,       {.i = -1 } }, */
 /* { MODKEY|Mod4Mask|ShiftMask,    XK_h,      incrogaps,      {.i = +1 } }, */
@@ -301,6 +302,8 @@ static Key keys[] = {
 /* { MODKEY|ShiftMask,             XK_y,      incrovgaps,     {.i = +1 } }, */
 /* { MODKEY|ShiftMask,             XK_o,      incrovgaps,     {.i = -1 } }, */
 
+    { MODKEY|ShiftMask, XK_w, tabmode, {-1} },
+    { ClkTabBar, 0, Button1, focuswin, {0} },
 };
 
 /* button definitions */
@@ -328,4 +331,11 @@ static Button buttons[] = {
 	{ ClkTagBar,			0,				Button5,	shiftview,	{.i = 1} },
 	{ ClkRootWin,			0,				Button2,	togglebar,	{0} },
 };
-// vim: ts=4:sts=4:sw=4
+
+/* tab patch */
+/*  Display modes of the tab bar: never shown, always shown, shown only in  */
+/*  monocle mode in the presence of several windows.                        */
+/*  Modes after showtab_nmodes are disabled.                                */
+enum showtab_modes { showtab_never, showtab_auto, showtab_nmodes, showtab_always};
+static const int showtab			= showtab_auto;        /* Default tab bar show mode */
+static const int toptab				= False;               /* False means bottom tab bar */
