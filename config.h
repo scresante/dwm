@@ -111,8 +111,14 @@ static const char *termcmd[]  = { "alacritty", NULL };
 
 static Key keys[] = {
 /* modifier                     key        function        argument */
-	STACKKEYS(MODKEY,               focus)
-	STACKKEYS(MODKEY|ShiftMask,     push)
+    //STACKKEYS(MODKEY,               focus)
+    //STACKKEYS(MODKEY|ShiftMask,     push)
+    { MODKEY,	        XK_j,	    focusstack,	{.i = INC(+1) } },
+    { MODKEY,	        XK_k,	    focusstack,	{.i = INC(-1) } },
+    { MODKEY,           XK_v,       focusstack,  {.i = 0 } },
+    { MODKEY|ShiftMask, XK_j,	    pushstack,	{.i = INC(+1) } },
+    { MODKEY|ShiftMask, XK_k,	    pushstack,	{.i = INC(-1) } },
+    { MODKEY|ShiftMask, XK_v,       pushstack,  {.i = 0 } },
 	{ MODKEY,			XK_grave,	spawn,	SHCMD("dmenuunicode") },
 	TAGKEYS(			XK_1,		0)
 	TAGKEYS(			XK_2,		1)
@@ -307,6 +313,8 @@ static Key keys[] = {
 /* click can be ClkTagBar, ClkLtSymbol, ClkStatusText, ClkWinTitle, ClkClientWin, or ClkRootWin */
 static Button buttons[] = {
 /* click                event mask      button          function        argument */
+    { ClkWinTitle,	        0,	            Button4,	focusstack,     {.i = INC(-1) } },
+    { ClkWinTitle,	        0,	            Button5,	focusstack,     {.i = INC(+1) } },
 	{ ClkWinTitle,          0,              Button2,    zoom,           {0} },
 	{ ClkStatusText,        0,              Button1,    sigdwmblocks,   {.i = 1} },
 	{ ClkStatusText,        0,              Button2,    sigdwmblocks,   {.i = 2} },
