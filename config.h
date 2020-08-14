@@ -132,9 +132,10 @@ static Key keys[] = {
 
 	{ MODKEY,		    XK_0,			view,		{.ui = ~0 } },
 	{ MODKEY|ShiftMask,	XK_0,			tag,		{.ui = ~0 } },
-    { CTRL|ALT|ShiftMask, XK_bracketleft, spawn,     SHCMD("brightness down") },
-    { CTRL|ALT|ShiftMask, XK_bracketright,spawn,     SHCMD("brightness up") },
-    { CTRL|ALT|ShiftMask, XK_Delete,    spawn,     SHCMD("i3lock-fancy") },
+    { CTRL|ALT|ShiftMask, XK_bracketleft, spawn,    SHCMD("brightness down") },
+    { CTRL|ALT|ShiftMask, XK_bracketright,spawn,    SHCMD("brightness up") },
+    { CTRL|ALT|ShiftMask, XK_Delete,    spawn,      SHCMD("i3lock-fancy") },
+    { CTRL|ALT|ShiftMask, XK_c,         spawn,      SHCMD("CaSe.py") },
 
 	{ MODKEY,		    XK_minus,       spawn,		SHCMD("pamixer --allow-boost -d 5; kill -44 $(pidof dwmblocks)") },
 	{ MODKEY|ShiftMask,	XK_minus,       spawn,		SHCMD("pamixer --allow-boost -d 15; kill -44 $(pidof dwmblocks)") },
@@ -315,6 +316,8 @@ static Button buttons[] = {
 /* click                event mask      button          function        argument */
     { ClkWinTitle,	        0,	            Button4,	focusstack,     {.i = INC(-1) } },
     { ClkWinTitle,	        0,	            Button5,	focusstack,     {.i = INC(+1) } },
+    { ClkWinTitle,	        ShiftMask,      Button4,	pushstack,     {.i = INC(-1) } },
+    { ClkWinTitle,	        ShiftMask,      Button5,	pushstack,     {.i = INC(+1) } },
 	{ ClkWinTitle,          0,              Button2,    zoom,           {0} },
 	{ ClkStatusText,        0,              Button1,    sigdwmblocks,   {.i = 1} },
 	{ ClkStatusText,        0,              Button2,    sigdwmblocks,   {.i = 2} },
