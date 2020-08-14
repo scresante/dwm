@@ -301,9 +301,6 @@ static Key keys[] = {
 /* { MODKEY|Mod4Mask,              XK_o,      incrohgaps,     {.i = -1 } }, */
 /* { MODKEY|ShiftMask,             XK_y,      incrovgaps,     {.i = +1 } }, */
 /* { MODKEY|ShiftMask,             XK_o,      incrovgaps,     {.i = -1 } }, */
-
-    { MODKEY|ShiftMask, XK_w, tabmode, {-1} },
-    { ClkTabBar, 0, Button1, focuswin, {0} },
 };
 
 /* button definitions */
@@ -332,10 +329,3 @@ static Button buttons[] = {
 	{ ClkRootWin,			0,				Button2,	togglebar,	{0} },
 };
 
-/* tab patch */
-/*  Display modes of the tab bar: never shown, always shown, shown only in  */
-/*  monocle mode in the presence of several windows.                        */
-/*  Modes after showtab_nmodes are disabled.                                */
-enum showtab_modes { showtab_never, showtab_auto, showtab_nmodes, showtab_always};
-static const int showtab			= showtab_auto;        /* Default tab bar show mode */
-static const int toptab				= False;               /* False means bottom tab bar */
