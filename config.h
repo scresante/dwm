@@ -21,13 +21,10 @@ static char selfgcolor[]            = "#eeeeee";
 //static char selbordercolor[]        = "#770000";
 static char selbordercolor[]        = "#33c332";
 static char selbgcolor[]            = "#005577";
-static const char col_gray1[]       = "#222222";
-static const char col_cyan[]        = "#005577";
 static char *colors[][3] = {
 /*	fg	bg	border	*/
        [SchemeNorm] = { normfgcolor, normbgcolor, normbordercolor },
        [SchemeSel]  = { selfgcolor,  selbgcolor,  selbordercolor  },
-       [SchemeHid]  = { col_cyan,  col_gray1, col_cyan  },
 };
 
 typedef struct {
@@ -322,7 +319,6 @@ static Button buttons[] = {
     { ClkWinTitle,	        ShiftMask,      Button4,	pushstack,     {.i = INC(-1) } },
     { ClkWinTitle,	        ShiftMask,      Button5,	pushstack,     {.i = INC(+1) } },
 	{ ClkWinTitle,          0,              Button2,    zoom,           {0} },
-  { ClkWinTitle,          0,              Button1,  togglewin,      {0} },
 	{ ClkStatusText,        0,              Button1,    sigdwmblocks,   {.i = 1} },
 	{ ClkStatusText,        0,              Button2,    sigdwmblocks,   {.i = 2} },
 	{ ClkStatusText,        0,              Button3,    sigdwmblocks,   {.i = 3} },
