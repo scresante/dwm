@@ -217,11 +217,10 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask, XK_Page_Down,	shifttag,	{ .i = +1 } },
 	{ MODKEY,	        XK_Insert,	    spawn,		SHCMD("notify-send \"📋 Clipboard contents:\" \"$(xclip -o -selection clipboard)\"") },
 
-	{ MODKEY,			XK_F1,			spawn,		SHCMD("groff -mom /usr/local/share/dwm/larbs.mom -Tpdf | zathura -") },
 	{ MODKEY,			XK_F2,			spawn,		SHCMD("tutorialvids") },
 	//{ MODKEY,			XK_F3,			spawn,		SHCMD("displayselect") },
     { MODKEY,			XK_F3,			spawn,		SHCMD("notify-send -u normal -t 1000 'f3'") },
-	{ MODKEY,			XK_F4,			spawn,		SHCMD("st -e pulsemixer; kill -44 $(pidof dwmblocks)") },
+	//{ MODKEY,			XK_F4,			spawn,		SHCMD("st -e pulsemixer; kill -44 $(pidof dwmblocks)") },
 	{ MODKEY,			XK_F5,			xrdb,		{.v = NULL } },
 	//{ MODKEY,			XK_F5,			spawn,      SHCMD("notify-send -u normal -t 1000 'f5'")},
 	//{ MODKEY,			XK_F6,			spawn,		SHCMD("torwrap") },
@@ -232,7 +231,7 @@ static Key keys[] = {
 	{ MODKEY,			XK_F8,			spawn,      SHCMD("notify-send -u normal -t 1000 'f8'")},
     { MODKEY,			XK_F9,			spawn,		SHCMD("alacritty -e vim ~/.local/src/dwm/config.h") },
     { MODKEY|ShiftMask,	XK_F9,			spawn,		SHCMD("/home/shawn/bin/dwm-rebuild") },
-    { MODKEY,	        XK_F10,			spawn,		SHCMD("alacritty -e vim ~/.local/src/dwmblocks/config.h") },
+    //{ MODKEY,	        XK_F10,			spawn,		SHCMD("alacritty -e vim ~/.local/src/dwmblocks/config.h") },
 	//{ MODKEY,			XK_F9,			spawn,		SHCMD("dmenumount") },
 	//{ MODKEY,			XK_F10,			spawn,		SHCMD("dmenuumount") },
 	//{ MODKEY,			XK_F11,			spawn,		SHCMD("mpv --no-cache --no-osc --no-input-default-bindings --input-conf=/dev/null --title=webcam $(ls /dev/video[0,2,4,6,8] | tail -n 1)") },
@@ -275,39 +274,7 @@ static Key keys[] = {
 	{ 0, XF86XK_AudioRewind,			spawn,		SHCMD("mpc seek -10") },
 	{ 0, XF86XK_AudioForward,			spawn,		SHCMD("mpc seek +10") },
 	{ 0, XF86XK_AudioMedia,				spawn,		SHCMD("st -e ncmpcpp") },
-	{ 0, XF86XK_PowerOff,				spawn,		SHCMD("sysact") },
-	{ 0, XF86XK_Calculator,				spawn,		SHCMD("st -e bc -l") },
-	{ 0, XF86XK_Sleep,					spawn,		SHCMD("sudo -A zzz") },
-	{ 0, XF86XK_WWW,					spawn,		SHCMD("$BROWSER") },
-	{ 0, XF86XK_DOS,					spawn,		SHCMD("st") },
-	{ 0, XF86XK_ScreenSaver,			spawn,		SHCMD("slock & xset dpms force off; mpc pause; pauseallmpv") },
-	{ 0, XF86XK_TaskPane,				spawn,		SHCMD("st -e htop") },
-	{ 0, XF86XK_Mail,					spawn,		SHCMD("st -e neomutt ; pkill -RTMIN+12 dwmblocks") },
-	{ 0, XF86XK_MyComputer,				spawn,		SHCMD("st -e lf /") },
-/* { 0,     XF86XK_Battery,			spawn,		SHCMD("") }, */
-	{ 0, XF86XK_Launch1,				spawn,		SHCMD("xset dpms force off") },
-	{ 0, XF86XK_TouchpadToggle,			spawn,		SHCMD("(synclient | grep 'TouchpadOff.*1' && synclient TouchpadOff=0) || synclient TouchpadOff=1") },
-	{ 0, XF86XK_TouchpadOff,			spawn,		SHCMD("synclient TouchpadOff=1") },
-	{ 0, XF86XK_TouchpadOn,				spawn,		SHCMD("synclient TouchpadOff=0") },
-	{ 0, XF86XK_MonBrightnessUp,		spawn,		SHCMD("xbacklight -inc 15") },
-	{ 0, XF86XK_MonBrightnessDown,		spawn,		SHCMD("xbacklight -dec 15") },
 
-    // unused shit from lukes config
-/* { MODKEY|Mod4Mask,				XK_h,      incrgaps,       {.i = +1 } }, */
-/* { MODKEY|Mod4Mask,              XK_l,      incrgaps,       {.i = -1 } }, */
-/* { MODKEY|Mod4Mask|ShiftMask,    XK_h,      incrogaps,      {.i = +1 } }, */
-/* { MODKEY|Mod4Mask|ShiftMask,    XK_l,      incrogaps,      {.i = -1 } }, */
-/* { MODKEY|Mod4Mask|ControlMask,  XK_h,      incrigaps,      {.i = +1 } }, */
-/* { MODKEY|Mod4Mask|ControlMask,  XK_l,      incrigaps,      {.i = -1 } }, */
-/* { MODKEY|Mod4Mask|ShiftMask,    XK_0,      defaultgaps,    {0} }, */
-/* { MODKEY,                       XK_y,      incrihgaps,     {.i = +1 } }, */
-/* { MODKEY,                       XK_o,      incrihgaps,     {.i = -1 } }, */
-/* { MODKEY|ControlMask,           XK_y,      incrivgaps,     {.i = +1 } }, */
-/* { MODKEY|ControlMask,           XK_o,      incrivgaps,     {.i = -1 } }, */
-/* { MODKEY|Mod4Mask,              XK_y,      incrohgaps,     {.i = +1 } }, */
-/* { MODKEY|Mod4Mask,              XK_o,      incrohgaps,     {.i = -1 } }, */
-/* { MODKEY|ShiftMask,             XK_y,      incrovgaps,     {.i = +1 } }, */
-/* { MODKEY|ShiftMask,             XK_o,      incrovgaps,     {.i = -1 } }, */
 };
 
 /* button definitions */
